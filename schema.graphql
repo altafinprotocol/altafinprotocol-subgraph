@@ -1,0 +1,134 @@
+# Helix
+type Helix @entity {
+  # Contract address
+  id: ID!
+
+  # Decimals
+  decimals: Int!
+
+  # Name
+  name: String!
+
+  # AFN token
+  afn: Bytes!
+
+  # Symbol
+  symbol: String!
+
+  # Total xAFN supply
+  totalSupply: BigDecimal!
+
+  # Ratio xAFN per AFN
+  ratio: BigDecimal!
+
+  # xAFN minted
+  xAfnMinted: BigDecimal!
+
+  # xAFN burned
+  xAfnBurned: BigDecimal!
+
+  # AFN staked
+  afnStaked: BigDecimal!
+
+  # AFN harvested
+  afnHarvested: BigDecimal!
+
+  # xAFN age
+  xAfnAge: BigDecimal!
+
+  # xAFN age destroyed
+  xAfnAgeDestroyed: BigDecimal!
+
+  # Users in the Helix
+  users: [User!]! @derivedFrom(field: "helix")
+
+  # Updated at
+  updatedAt: BigInt!
+}
+
+# User
+type User @entity {
+  # ID
+  id: ID!
+
+  # Helix
+  helix: Helix
+
+  # xAFN (balance)
+  xAfn: BigDecimal!
+
+  # xAFN In
+  xAfnIn: BigDecimal!
+
+  # xAFN Out
+  xAfnOut: BigDecimal!
+
+  # Minted
+  xAfnMinted: BigDecimal!
+
+  # Burned
+  xAfnBurned: BigDecimal!
+
+  # xAFN offset
+  xAfnOffset: BigDecimal!
+
+  # xAFN age
+  xAfnAge: BigDecimal!
+
+  # xAFN age destroyed
+  xAfnAgeDestroyed: BigDecimal!
+
+  # Staked
+  afnStaked: BigDecimal!
+
+  # Sum of $ at time of staking
+  afnStakedUSD: BigDecimal!
+
+  # Harvested
+  afnHarvested: BigDecimal!
+
+  # Sum of $ at time of harvesting
+  afnHarvestedUSD: BigDecimal!
+
+  # To get helix pending AFN (xAFN * staked / Helix.totalSupply)
+
+  # AFN Out
+  afnOut: BigDecimal!
+
+  # AFN In
+  afnIn: BigDecimal!
+
+  # USD Out
+  usdOut: BigDecimal!
+
+  # USD In
+  usdIn: BigDecimal!
+
+  # Updated at
+  updatedAt: BigInt!
+
+  # AFN offset
+  afnOffset: BigDecimal!
+
+  # usd offset
+  usdOffset: BigDecimal!
+}
+
+# History
+enum Timeframe {
+  Day
+}
+
+type History @entity {
+  id: ID!
+  date: Int!
+  timeframe: Timeframe!
+  afnStaked: BigDecimal!
+  afnHarvested: BigDecimal!
+  xAfnAge: BigDecimal!
+  xAfnAgeDestroyed: BigDecimal!
+  xAfnMinted: BigDecimal!
+  xAfnBurned: BigDecimal!
+  xAfnSupply: BigDecimal!
+  ratio: BigDecimal!
+}

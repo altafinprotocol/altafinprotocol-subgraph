@@ -1,0 +1,18 @@
+{
+  "name": "altahelix",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "AltaFin",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ altafin/altahelix",
+    "create-local": "graph create --node http://localhost:8020/ altafin/altahelix",
+    "remove-local": "graph remove --node http://localhost:8020/ altafin/altahelix",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 altafin/altahelix"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.25.1",
+    "@graphprotocol/graph-ts": "0.24.1"
+  }
+}

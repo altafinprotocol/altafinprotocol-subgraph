@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AltaHelix
+    network: mainnet
+    source:
+      address: "0x7D1BE7F0e7cA3CcFbE25fc4153f0d1112fa44D1e"
+      abi: AltaHelix
+      startBlock: 13801155
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Transfer
+      abis:
+        - name: AltaHelix
+          file: ./abis/AltaHelix.json
+        - name: Altafin
+          file: ./abis/Altafin.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: transfer
+      file: ./src/altahelix.ts
